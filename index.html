@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ARSHA KHATAMI | Backend Engineer</title>
+  <meta name="description" content="Arsha Khatami: Backend Engineer building ASP.NET Core APIs and distributed systems." />
+  <meta name="theme-color" content="#0f1215" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="ARSHA KHATAMI | Backend Engineer" />
+  <meta property="og:description" content="Backend Engineer: C#, .NET, PostgreSQL, Redis, Docker, CI/CD." />
+  <!-- TODO: after deploy, put the real URL here and remove this comment
+  <meta property="og:image" content="https://YOUR-SITE-URL/og-image.jpg" />
+  <meta property="og:url" content="https://YOUR-SITE-URL/" />
+  -->
+  <meta name="twitter:card" content="summary_large_image" />
+  
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="is-loading">
+
+  <!-- Loader -->
+    <div id="loader" class="loader">
+      <div class="loader-panel loader-panel--top"></div>
+      <div class="loader-panel loader-panel--bottom"></div>
+
+      <div class="loader-inner">
+        <ul class="boot-log" id="bootLog"></ul>
+        <div class="loader-row">
+          <span id="loaderPercent" class="loader-percent">000</span>
+          <span class="loader-unit">%</span>
+        </div>
+        <div class="loader-track"><div id="loaderBar" class="loader-bar"></div></div>
+      </div>
+    </div>
+
+    <script>
+      /* Failsafe: if script.js breaks, open the loader after 9 seconds */
+      setTimeout(function () {
+        var l = document.getElementById('loader');
+        if (l) { l.classList.add('opening'); l.classList.add('hidden'); }
+        document.body.classList.remove('is-loading');
+      }, 9000);
+    </script>
+
+  <!-- 3D perspective floor (fixed background) -->
+  <div class="bg-3d" aria-hidden="true">
+    <div class="floor" id="bgFloor"></div>
+  </div>
+
+  <!-- Hamburger Menu -->
+  <header class="navbar">
+    <button id="menuToggle" class="menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="sideMenu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <div id="menuOverlay" class="menu-overlay"></div>
+
+  <aside id="sideMenu" class="side-menu" aria-hidden="true">
+    <a href="#hero" class="logo">ARSHA<span>.</span></a>
+    <nav>
+      <a href="#about"><small>01</small>About</a>
+      <a href="#skills"><small>02</small>Stack</a>
+      <a href="#projects"><small>03</small>Projects</a>
+      <a href="#now"><small>04</small>Now</a>
+      <a href="#contact"><small>05</small>Contact</a>
+    </nav>
+  </aside>
+
+  <!-- 1. Full-Screen Scroll-Controlled Video Hero -->
+  <section id="hero" class="hero-scroll-track">
+    <div class="hero-sticky-viewport">
+      <video id="heroVideo" muted playsinline preload="auto" class="hero-video-fullscreen"
+        data-desktop="hero-video.mp4" data-mobile="hero-mobile.mp4">
+      </video>
+
+      <div class="hero-stage" aria-live="polite">
+        <span id="heroStage">01 / SEALED</span>
+      </div>
+
+      <div class="hero-overlay-bar">
+        <span id="heroBadge" class="badge">● Scroll Down to Unpack Architecture ↓</span>
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+
+    <!-- 2. About -->
+    <section id="about" class="section">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-layout">
+        <div class="glass-card">
+          <p>
+            I'm a backend engineer with 2 years of experience building e-commerce APIs and admin platforms.
+            I work mostly with C#/.NET, PostgreSQL and Redis, and I care about clean schemas,
+            automated testing and boring, reliable deployments.
+          </p>
+          <p>
+            I'm currently open to freelance projects and remote opportunities where I can own a service
+            end-to-end: from the database schema and API design to the CI/CD pipeline that ships it.
+          </p>
+        </div>
+        <div class="about-visual" aria-hidden="true">
+          <img src="img/about-object.webp" alt="" data-depth="0.6" loading="lazy"
+               onerror="this.parentElement.remove()" />
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Tech Stack -->
+   <section id="skills" class="section">
+  <h2 class="section-title">Core Tech Stack</h2>
+
+  <div class="stack-layout">
+    <div class="skills-grid">
+      <div class="glass-card skill-category">
+        <h3>Backend &amp; Data</h3>
+        <div class="tag-list">
+          <span class="tag">C# / .NET</span>
+          <span class="tag">ASP.NET Core Web API</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">EF Core</span>
+          <span class="tag">Redis</span>
+        </div>
+      </div>
+
+      <div class="glass-card skill-category">
+        <h3>Frontend &amp; UI</h3>
+        <div class="tag-list">
+          <span class="tag">HTML5 &amp; CSS3</span>
+          <span class="tag">Blazor / MudBlazor</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">Responsive Design</span>
+        </div>
+      </div>
+
+      <div class="glass-card skill-category">
+        <h3>DevOps &amp; Security</h3>
+        <div class="tag-list">
+          <span class="tag">Docker</span>
+          <span class="tag">GitHub Actions CI/CD</span>
+          <span class="tag">Nginx</span>
+          <span class="tag">Cloudflare &amp; WAF</span>
+          <span class="tag">Linux</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="stack-visual" aria-hidden="true">
+      <img src="img/stack-isometric.webp" alt="" data-depth="0.5" loading="lazy"
+           onerror="this.parentElement.remove()" />
+    </div>
+  </div>
+</section>
+
+    <!-- 4. Featured Projects -->
+    <section id="projects" class="section">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="projects-grid">
+
+        <!-- Project 1 -->
+        <article class="glass-card project-card">
+          <div class="project-media">
+            <video muted loop playsinline preload="metadata">
+              <source src="img/project-ecommerce.mp4" type="video/mp4"
+                      onerror="this.closest('.project-media').remove()" />
+            </video>
+          </div>
+
+          <div class="project-header">
+            <div class="project-title">
+              <span class="project-icon" aria-hidden="true">
+              <svg class="anim-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <!-- ورود سبد از چپ، خروج از راست -->
+                <g>
+                  <animate attributeName="opacity" dur="5s" repeatCount="indefinite"
+                          values="0;1;1;0;0" keyTimes="0;0.05;0.80;0.93;1"/>
+                  <animateTransform attributeName="transform" type="translate" dur="5s" repeatCount="indefinite"
+                          calcMode="spline"
+                          keyTimes="0;0.02;0.24;0.80;0.95;1"
+                          keySplines="0 0 1 1;0.2 0.8 0.3 1;0 0 1 1;0.6 0 0.8 0.4;0 0 1 1"
+                          values="-16 0;-16 0;0 0;0 0;16 0;16 0"/>
+
+                  <!-- فرورفتن سبد با هر جعبه -->
+                  <g>
+                    <animateTransform attributeName="transform" type="translate" dur="5s" repeatCount="indefinite"
+                            keyTimes="0;0.38;0.41;0.45;0.50;0.53;0.57;1"
+                            values="0 0;0 0;0 1;0 0;0 0;0 1;0 0;0 0"/>
+
+                    <path d="M2 3h3l2.7 12.4a1 1 0 0 0 1 .8h8.9a1 1 0 0 0 1-.8L20 8H6"/>
+
+                    <!-- چرخ‌ها (خط‌چین می‌چرخه تا چرخش دیده بشه) -->
+                    <circle cx="9" cy="20" r="1.5" stroke-width="1.4" stroke-dasharray="2.1 1.04">
+                      <animateTransform attributeName="transform" type="rotate" dur="5s" repeatCount="indefinite"
+                              keyTimes="0;0.24;0.80;0.95;1"
+                              values="0 9 20;540 9 20;540 9 20;1080 9 20;1080 9 20"/>
+                    </circle>
+                    <circle cx="18" cy="20" r="1.5" stroke-width="1.4" stroke-dasharray="2.1 1.04">
+                      <animateTransform attributeName="transform" type="rotate" dur="5s" repeatCount="indefinite"
+                              keyTimes="0;0.24;0.80;0.95;1"
+                              values="0 18 20;540 18 20;540 18 20;1080 18 20;1080 18 20"/>
+                    </circle>
+
+                    <!-- جعبه ۱ -->
+                    <rect x="9.5" y="-4" width="3" height="3" rx="0.6" fill="currentColor" stroke="none">
+                      <animate attributeName="y" dur="5s" repeatCount="indefinite"
+                              calcMode="spline"
+                              keyTimes="0;0.30;0.38;1"
+                              keySplines="0 0 1 1;0.5 0 1 1;0 0 1 1"
+                              values="-4;-4;10;10"/>
+                      <animate attributeName="opacity" dur="5s" repeatCount="indefinite"
+                              calcMode="discrete" keyTimes="0;0.30;1" values="0;1;1"/>
+                    </rect>
+
+                    <!-- جعبه ۲ -->
+                    <rect x="13.5" y="-4" width="3" height="3" rx="0.6" fill="currentColor" stroke="none">
+                      <animate attributeName="y" dur="5s" repeatCount="indefinite"
+                              calcMode="spline"
+                              keyTimes="0;0.42;0.50;1"
+                              keySplines="0 0 1 1;0.5 0 1 1;0 0 1 1"
+                              values="-4;-4;10;10"/>
+                      <animate attributeName="opacity" dur="5s" repeatCount="indefinite"
+                              calcMode="discrete" keyTimes="0;0.42;1" values="0;1;1"/>
+                    </rect>
+                  </g>
+                </g>
+              </svg>
+            </span>
+              <h3>E-Commerce Platform &amp; Admin Suite</h3>
+            </div>
+            <span class="project-links">
+              <a href="https://github.com/arshakhatamiii/ecommerce-platform" target="_blank" rel="noopener">GitHub ↗</a>
+            </span>
+          </div>
+
+          <dl class="case-study">
+            <dt>Problem</dt>
+            <dd>
+              An online store needs to stay fast under traffic spikes while giving the
+              owner a simple way to manage products, orders and customers.
+            </dd>
+
+            <dt>Decision</dt>
+            <dd>
+              ASP.NET Core Web API on PostgreSQL with EF Core migrations applied
+              automatically on deploy. Redis cache-aside for hot reads such as the
+              product catalog, and a custom admin dashboard built on the same API.
+              Everything runs in Docker for identical dev and prod environments.
+            </dd>
+
+            <dt>Result</dt>
+           <dd>
+              Deploys went from manual to fully automated. Every flow in the admin panel,
+              down to the smallest button, is covered by Playwright end-to-end tests.
+            </dd>
+          </dl>
+
+          <div class="tag-list">
+            <span class="tag">.NET</span>
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">Redis</span>
+            <span class="tag">Docker</span>
+            <span class="tag">Playwright</span>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="glass-card project-card">
+          <div class="project-media">
+            <video muted loop playsinline preload="metadata">
+              <source src="img/project-cicd.mp4" type="video/mp4"
+                      onerror="this.closest('.project-media').remove()" />
+            </video>
+          </div>
+
+          <div class="project-header">
+            <div class="project-title">
+              <span class="project-icon" aria-hidden="true">
+              <svg class="anim-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <g>
+                  <animate attributeName="opacity" dur="5s" repeatCount="indefinite"
+                          values="0;1;1;0;0" keyTimes="0;0.05;0.86;0.91;1"/>
+
+                  <!-- دایره که می‌چرخه و به سپر تبدیل می‌شه -->
+                  <path d="M12 3 C15.216 3 18.186 4.715 19.794 7.5 C21.402 10.285 21.402 13.715 19.794 16.5 C18.186 19.285 15.216 21 12 21 C8.784 21 5.814 19.285 4.206 16.5 C2.598 13.715 2.598 10.285 4.206 7.5 C5.814 4.715 8.784 3 12 3 Z">
+                    <animate attributeName="d" dur="5s" repeatCount="indefinite"
+                            calcMode="spline"
+                            keyTimes="0;0.12;0.42;0.91;0.93;1"
+                            keySplines="0 0 1 1;0.4 0 0.2 1;0 0 1 1;0 0 1 1;0 0 1 1"
+                            values="
+                              M12 3 C15.216 3 18.186 4.715 19.794 7.5 C21.402 10.285 21.402 13.715 19.794 16.5 C18.186 19.285 15.216 21 12 21 C8.784 21 5.814 19.285 4.206 16.5 C2.598 13.715 2.598 10.285 4.206 7.5 C5.814 4.715 8.784 3 12 3 Z;
+                              M12 3 C15.216 3 18.186 4.715 19.794 7.5 C21.402 10.285 21.402 13.715 19.794 16.5 C18.186 19.285 15.216 21 12 21 C8.784 21 5.814 19.285 4.206 16.5 C2.598 13.715 2.598 10.285 4.206 7.5 C5.814 4.715 8.784 3 12 3 Z;
+                              M12 3 C14.667 4 17.333 5 20 6 C20 8 20 10 20 12 C20 16.5 16.8 20 12 21 C7.2 20 4 16.5 4 12 C4 10 4 8 4 6 C6.667 5 9.333 4 12 3 Z;
+                              M12 3 C14.667 4 17.333 5 20 6 C20 8 20 10 20 12 C20 16.5 16.8 20 12 21 C7.2 20 4 16.5 4 12 C4 10 4 8 4 6 C6.667 5 9.333 4 12 3 Z;
+                              M12 3 C15.216 3 18.186 4.715 19.794 7.5 C21.402 10.285 21.402 13.715 19.794 16.5 C18.186 19.285 15.216 21 12 21 C8.784 21 5.814 19.285 4.206 16.5 C2.598 13.715 2.598 10.285 4.206 7.5 C5.814 4.715 8.784 3 12 3 Z;
+                              M12 3 C15.216 3 18.186 4.715 19.794 7.5 C21.402 10.285 21.402 13.715 19.794 16.5 C18.186 19.285 15.216 21 12 21 C8.784 21 5.814 19.285 4.206 16.5 C2.598 13.715 2.598 10.285 4.206 7.5 C5.814 4.715 8.784 3 12 3 Z"/>
+                    <animateTransform attributeName="transform" type="rotate" dur="5s" repeatCount="indefinite"
+                            calcMode="spline"
+                            keyTimes="0;0.12;0.42;1"
+                            keySplines="0 0 1 1;0.4 0 0.2 1;0 0 1 1"
+                            values="0 12 12;0 12 12;360 12 12;360 12 12"/>
+                  </path>
+
+                  <!-- تیک که کشیده می‌شه -->
+                  <path d="M8.5 12l2.5 2.5 4.5-5" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1">
+                    <animate attributeName="stroke-dashoffset" dur="5s" repeatCount="indefinite"
+                            calcMode="spline"
+                            keyTimes="0;0.46;0.62;1"
+                            keySplines="0 0 1 1;0.4 0 0.2 1;0 0 1 1"
+                            values="1;1;0;0"/>
+                    <animate attributeName="opacity" dur="5s" repeatCount="indefinite"
+                            calcMode="discrete" keyTimes="0;0.46;1" values="0;1;1"/>
+                  </path>
+                </g>
+              </svg>
+            </span>
+              <h3>Multi-Stage CI/CD &amp; Edge Security Pipeline</h3>
+            </div>
+            <span class="project-links">
+              <a href="https://github.com/arshakhatamiii/cicd-edge-security" target="_blank" rel="noopener">GitHub ↗</a>
+            </span>
+          </div>
+
+          <dl class="case-study">
+            <dt>Problem</dt>
+            <dd>
+              Manual deployments were slow and error-prone, and the public API was
+              exposed to abusive traffic with no layered protection.
+            </dd>
+
+            <dt>Decision</dt>
+            <dd>
+              GitHub Actions pipeline with separate build, test, security-scan and
+              deploy stages that ships versioned Docker images. Nginx as a hardened
+              reverse proxy with rate limiting, behind Cloudflare WAF, on a locked-down
+              Linux host.
+            </dd>
+
+            <dt>Result</dt>
+            <dd>
+              Fully automated deploys with no manual steps between merge and production,
+              and abusive requests filtered at the edge before they reach the API.
+            </dd>
+          </dl>
+
+          <div class="tag-list">
+            <span class="tag">GitHub Actions</span>
+            <span class="tag">Nginx</span>
+            <span class="tag">Cloudflare</span>
+            <span class="tag">Linux</span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- 5. Currently Building -->
+    <section id="now" class="section">
+      <h2 class="section-title">Currently Building</h2>
+      <div class="glass-card">
+        <ul class="now-list">
+          <li>▸ Single-vendor store: .NET backend and admin panel</li>
+          <li>▸ Desktop AI voice assistant: animated robot, voice in/out, MCP routing to Claude, Gemini and Antigravity</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 6. Contact -->
+    <section id="contact" class="section">
+      <div class="glass-card contact-card">
+        <div class="contact-bg" aria-hidden="true">
+          <video muted loop playsinline preload="metadata">
+            <source src="img/contact-bg.mp4" type="video/mp4"
+                    onerror="this.closest('.contact-bg').remove()" />
+          </>
+        </div>
+
+        <h2>Let's Connect</h2>
+        <p>Have a question, a project idea, or want to talk shop? Reach out directly.</p>
+
+        <form class="contact-form" action="https://formspree.io/f/xqpplkgo" method="post">
+          <input type="text" name="name" placeholder="Your name" required />
+          <input type="email" name="email" placeholder="Your email" required />
+          <textarea name="message" rows="4" placeholder="Message" required></textarea>
+          <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+
+        <div class="hero-actions">
+          <a href="mailto:arshakhatami09@gmail.com" class="btn btn-secondary">Email</a>
+          <a href="https://github.com/arshakhatamiii" target="_blank" rel="noopener" class="btn btn-secondary">GitHub</a>
+          <a href="resume.pdf" download class="btn btn-secondary">Resume</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer with signature video -->
+  <footer class="footer">
+    <div class="footer-signature-wrapper">
+      <video id="footerVideo" muted playsinline preload="metadata" class="footer-video">
+        <source src="img/footer-signature.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <p>&copy; 2026 Arsha Khatami. Crafted from scratch.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
